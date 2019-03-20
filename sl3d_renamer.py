@@ -5,7 +5,6 @@ bl_info = {
 }
 
 import bpy
-import time
 
 class RN_OT_Renamer(bpy.types.Operator):
     """"Object Rename Appender"""
@@ -18,7 +17,7 @@ class RN_OT_Renamer(bpy.types.Operator):
     suffix = bpy.props.StringProperty(name="Suffix", default="")
 
     def execute(self, context):
-        time_start = time.time()
+        
         sObjs = bpy.context.selected_objects
 
         if not self.name:
@@ -37,7 +36,6 @@ class RN_OT_Renamer(bpy.types.Operator):
                 on = o.name
                 o.name = self.prefix + on
 
-        print("Script completed in: %.4f sec" % (time.time() - time_start))
         return {'FINISHED'}
 
 def menu_func(self, context):
